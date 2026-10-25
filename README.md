@@ -8,16 +8,17 @@
 ![Pillow 10+](https://img.shields.io/badge/Pillow-10.0%2B-00a3b8)
 ![Exports](https://img.shields.io/badge/exports-GIF%20%C2%B7%20MP4-00edce)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
+![Version: Stable 1.1](https://img.shields.io/badge/version-stable_1.1-7c3aed)
 
 ## Inspiration
 
-The piece starts from the saying itself and takes it literally. If the eyes are a window, then something should be visible moving through it — so the faces never hold still. They rotate, tilt, and settle as characters, and every time a face turns outward a stream leaves the eyes, dissolving into the plume rather than sitting on the face as a label.
+The piece starts from the saying itself and takes it literally. If the eyes are a window, then something should be visible moving through it, so the faces never hold still. They rotate, tilt, and settle as characters, and every time a face turns outward a stream leaves the eyes, dissolving into the plume rather than sitting on the face as a label.
 
 Rotation does the expressive work. A face that turns away closes the window; a face that turns back offers it again, and the outgoing stream is the one moment the letters are legible. Purple, pink, and green characters shape the faces so the light in the eyes registers before any letter does.
 
 ## Preview
 
-![Eyes Are the Window to the Soul — animated ASCII faces](eyes.gif)
+![Eyes Are the Window to the Soul, animated ASCII faces](eyes.gif)
 
 ## Features
 
@@ -72,7 +73,7 @@ Every frame keeps its rasterized glyphs instead of being re-typeset, so the char
 | `--source PATH` | built-in animation | Read a different animated GIF instead |
 | `--hue DEGREES` | `150` | Hue rotation; `0` keeps the original colors |
 | `--size PIXELS` | `800` | Playback window size |
-| `--export PATH` | — | Write a file instead of opening a window |
+| `--export PATH` | *(none)* | Write a file instead of opening a window |
 | `--video-size WxH` | `1920x1080` | Landscape canvas for video export |
 | `--fps RATE` | from the frame delays (`25`) | Video frame rate |
 
@@ -134,5 +135,6 @@ Released under the [MIT License](LICENSE): free to use, copy, modify, and share,
 
 - **Title:** Eyes Are the Window to the Soul
 - **Series:** ASCII Animation Series
+- **Version:** Stable 1.1
 - **Built by:** Homesh Peter Paul
 - **Inspiration:** “The eyes are the window to the soul.”
