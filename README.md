@@ -7,10 +7,7 @@
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
 ![Pillow 10+](https://img.shields.io/badge/Pillow-10.0%2B-00a3b8)
 ![Exports](https://img.shields.io/badge/exports-GIF%20%C2%B7%20MP4-00edce)
-
-Rotating ASCII faces release streams from their eyes. Purple, pink, and green characters form the faces, while **HOMESH** travels with each outgoing eye stream.
-
-`eyes.py` is self-contained: the animation is embedded in the file, so playback and export work with no external assets and no network access.
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 ## Inspiration
 
@@ -130,6 +127,11 @@ python3 eyes.py --export eyes_landscape.mp4 --video-size 2560x1440 --fps 30
 | `requirements.txt` | Python dependencies | < 1 KB |
 | `eyes.gif` | Animated preview export, 191 frames at 1024 × 1024 | ~20 MB |
 | `eyes_landscape.mp4` | Landscape video export, 1920 × 1080 at 25 fps | ~8 MB |
+| `LICENSE` | MIT License | < 1 KB |
+
+## License
+
+Released under the [MIT License](LICENSE): free to use, copy, modify, and share, including commercially, as long as the copyright notice stays with it. Provided as is, without warranty.
 
 ## Credits
 
