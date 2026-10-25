@@ -5,7 +5,7 @@ Inspired by the quote, "The eyes are the window to the soul."
 Built by Homesh Peter Paul.
 
 Rotating ASCII faces release streams from their eyes, with HOMESH appearing
-only during each outgoing stream. The default palette is purple, pink, and green.
+only during each outgoing stream. This edition uses a red and white palette.
 Animation data is embedded for self-contained playback and GIF export.
 Requires Pillow; desktop playback additionally requires Python with Tk support.
 """
@@ -16,18 +16,17 @@ import base64
 import io
 import zlib
 import time
-from PIL import Image, ImageTk, ImageDraw, ImageFont
+from PIL import Image, ImageTk, ImageDraw, ImageFont, ImageOps
 
 ROOT = Path(__file__).resolve().parent
 
 
 def recolor(frame, shift):
-    """Rotate hue while preserving luminance detail, alpha, and black pixels."""
+    """Apply the fixed red and white palette and preserve transparency."""
     rgba = frame.convert('RGBA')
-    hsv = rgba.convert('RGB').convert('HSV')
-    h, s, v = hsv.split()
-    h = h.point([(i + round(shift / 360 * 256)) % 256 for i in range(256)])
-    result = Image.merge('HSV', (h, s, v)).convert('RGBA')
+    brightness = ImageOps.grayscale(rgba)
+    result = ImageOps.colorize(brightness, black='#000000', mid='#ef1826',
+                              white='#ffffff', midpoint=128).convert('RGBA')
     result.putalpha(rgba.getchannel('A'))
     return result
 
@@ -74,8 +73,7 @@ def add_homesh(frame, index, total, shift=150):
     text_width = box[2] - box[0]
     text_height = box[3] - box[1]
     alpha = round(255 * visibility)
-    palette = [tuple(round(c * 255) for c in colorsys.hsv_to_rgb(
-        (hue + shift / 360) % 1, .8, 1)) for hue in (.33, .5, .92)]
+    palette = [(255, 45, 45), (255, 255, 255), (255, 115, 115)]
     positions = ((x1 + x2) / 2,)
     for eye, x in enumerate(positions):
         left = x * scale - text_width / 2
@@ -171,7 +169,7 @@ def export_video(frames, delays, destination, canvas, fps):
 def play(frames, delays, size):
     import tkinter as tk
     root = tk.Tk()
-    root.title('Eyes Are the Window to the Soul — ASCII Animation Series')
+    root.title('Eyes Are the Window to the Soul — Red and White')
     root.configure(bg='black')
     photos = [ImageTk.PhotoImage(f.resize((size, size), Image.Resampling.LANCZOS))
               for f in frames]
@@ -201,7 +199,7 @@ def play(frames, delays, size):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, help='Optional replacement GIF; defaults to embedded animation')
-    parser.add_argument('--hue', type=float, default=150, help='Hue rotation in degrees (default: 150)')
+    parser.add_argument('--hue', type=float, default=150, help='Compatibility option; this edition uses a fixed red and white palette')
     parser.add_argument('--size', type=int, default=800, help='Playback window size')
     parser.add_argument('--export', type=Path,
                         help='Export a looping GIF (.gif) or video (.mp4/.mov/.mkv/.webm) instead of opening a window')

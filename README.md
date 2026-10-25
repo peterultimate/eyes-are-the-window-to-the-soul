@@ -14,7 +14,7 @@
 
 The piece starts from the saying itself and takes it literally. If the eyes are a window, then something should be visible moving through it, so the faces never hold still. They rotate, tilt, and settle as characters, and every time a face turns outward a stream leaves the eyes, dissolving into the plume rather than sitting on the face as a label.
 
-Rotation does the expressive work. A face that turns away closes the window; a face that turns back offers it again, and the outgoing stream is the one moment the letters are legible. Purple, pink, and green characters shape the faces so the light in the eyes registers before any letter does.
+Rotation does the expressive work. A face that turns away closes the window; a face that turns back offers it again, and the outgoing stream is the one moment the letters are legible. Red and white characters shape the faces so the light in the eyes registers before any letter does.
 
 ## Preview
 
@@ -25,7 +25,7 @@ Rotation does the expressive work. A face that turns away closes the window; a f
 - Self-contained Python animation; no external assets required.
 - 191 frames at 1024 × 1024, looping over 7.64 seconds.
 - Lettering synchronized with the outgoing eye streams.
-- Adjustable color palette and playback window size.
+- Red and white palette and adjustable playback window size.
 - Looping GIF export and 1920 × 1080 landscape video export.
 
 ## Requirements
@@ -60,7 +60,7 @@ Desktop playback requires Tkinter. GIF and video exports run without opening a w
 
 ## How it works
 
-1. The embedded animation is decompressed and each frame is hue-rotated in HSV space, leaving luminance detail, alpha, and black pixels untouched.
+1. The embedded animation is decompressed and each frame is mapped to the red and white palette by luminance, leaving alpha and black pixels untouched.
 2. Every frame is composited on black, and the lettering is drawn along the outgoing eye plume from hand-keyed positions tied to the frame index.
 3. Playback draws those finished frames in a Tk window; exports write the same frames to a GIF or a video file.
 
@@ -71,7 +71,7 @@ Every frame keeps its rasterized glyphs instead of being re-typeset, so the char
 | Option | Default | Description |
 | --- | --- | --- |
 | `--source PATH` | built-in animation | Read a different animated GIF instead |
-| `--hue DEGREES` | `150` | Hue rotation; `0` keeps the original colors |
+| `--hue DEGREES` | `150` | Compatibility option; this palette is fixed |
 | `--size PIXELS` | `800` | Playback window size |
 | `--export PATH` | *(none)* | Write a file instead of opening a window |
 | `--video-size WxH` | `1920x1080` | Landscape canvas for video export |
@@ -83,14 +83,14 @@ Every frame keeps its rasterized glyphs instead of being re-typeset, so the char
 # Change the playback window size
 python3 eyes.py --size 700
 
-# Choose another color palette
-python3 eyes.py --hue 240
+# Rotate the hue in the color edition
+python3 eyes_color.py --hue 240
 
-# Use the original colors
-python3 eyes.py --hue 0
+# Keep the color edition's original colors
+python3 eyes_color.py --hue 0
 ```
 
-The default hue rotation is `150` degrees.
+`eyes.py` uses a fixed red and white palette. The color edition rotates hues by default, at `150` degrees.
 
 ## Export
 
@@ -122,7 +122,9 @@ python3 eyes.py --export eyes_landscape.mp4 --video-size 2560x1440 --fps 30
 
 | File | Purpose | Size |
 | --- | --- | --- |
-| `eyes.py` | Self-contained animation player and exporter, with the animation embedded | ~17 MB |
+| `eyes.py` | Self-contained animation player and exporter, red and white palette, with the animation embedded | ~17 MB |
+| `eyes_color.py` | Color edition: purple, pink, and green, with hue rotation | ~17 MB |
+| `eyes_monochrome.py` | Monochrome edition | ~17 MB |
 | `requirements.txt` | Python dependencies | < 1 KB |
 | `eyes.gif` | Animated preview export, 191 frames at 1024 × 1024 | ~20 MB |
 | `LICENSE` | MIT License | < 1 KB |
@@ -138,3 +140,14 @@ Released under the [MIT License](LICENSE): free to use, copy, modify, and share,
 - **Version:** Stable 1.1
 - **Built by:** Homesh Peter Paul
 - **Inspiration:** “The eyes are the window to the soul.”
+
+## Palette editions
+
+`eyes.py` uses a fixed red and white palette. Two standalone editions include the same animation and HOMESH stream timing:
+
+| Edition | Run | Export |
+| --- | --- | --- |
+| Color (purple, pink, green) | `python3 eyes_color.py` | `python3 eyes_color.py --export eyes_color.gif` |
+| Monochrome | `python3 eyes_monochrome.py` | `python3 eyes_monochrome.py --export eyes_monochrome.gif` |
+
+Both editions run independently without `eyes.py` or a separate GIF. Install the same dependencies from `requirements.txt`.
