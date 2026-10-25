@@ -11,9 +11,9 @@
 
 ## Inspiration
 
-The piece starts from the saying itself and takes it literally. If the eyes are a window, then something should be visible moving through it — so the faces never hold still. They rotate, tilt, and settle as characters, and every time a face turns outward a stream leaves the eyes, carrying **HOMESH** with it and dissolving into the plume rather than sitting on the face as a label.
+The piece starts from the saying itself and takes it literally. If the eyes are a window, then something should be visible moving through it — so the faces never hold still. They rotate, tilt, and settle as characters, and every time a face turns outward a stream leaves the eyes, dissolving into the plume rather than sitting on the face as a label.
 
-Rotation does the expressive work. A face that turns away closes the window; a face that turns back offers it again, and the outgoing stream is the one moment the name is legible. Purple, pink, and green characters shape the faces so the light in the eyes registers before any letter does.
+Rotation does the expressive work. A face that turns away closes the window; a face that turns back offers it again, and the outgoing stream is the one moment the letters are legible. Purple, pink, and green characters shape the faces so the light in the eyes registers before any letter does.
 
 ## Preview
 
@@ -23,7 +23,7 @@ Rotation does the expressive work. A face that turns away closes the window; a f
 
 - Self-contained Python animation; no external assets required.
 - 191 frames at 1024 × 1024, looping over 7.64 seconds.
-- HOMESH lettering synchronized with the outgoing eye streams.
+- Lettering synchronized with the outgoing eye streams.
 - Adjustable color palette and playback window size.
 - Looping GIF export and 1920 × 1080 landscape video export.
 
@@ -60,7 +60,7 @@ Desktop playback requires Tkinter. GIF and video exports run without opening a w
 ## How it works
 
 1. The embedded animation is decompressed and each frame is hue-rotated in HSV space, leaving luminance detail, alpha, and black pixels untouched.
-2. Every frame is composited on black, and the HOMESH inscription is drawn along the outgoing eye plume from hand-keyed positions tied to the frame index.
+2. Every frame is composited on black, and the lettering is drawn along the outgoing eye plume from hand-keyed positions tied to the frame index.
 3. Playback draws those finished frames in a Tk window; exports write the same frames to a GIF or a video file.
 
 Every frame keeps its rasterized glyphs instead of being re-typeset, so the characters stay pixel-exact.
