@@ -19,8 +19,6 @@ Rotation does the expressive work. A face that turns away closes the window; a f
 
 ![Eyes Are the Window to the Soul — animated ASCII faces](eyes.gif)
 
-[Watch the landscape video](eyes_landscape.mp4)
-
 ## Features
 
 - Self-contained Python animation; no external assets required.
@@ -126,7 +124,6 @@ python3 eyes.py --export eyes_landscape.mp4 --video-size 2560x1440 --fps 30
 | `eyes.py` | Self-contained animation player and exporter, with the animation embedded | ~17 MB |
 | `requirements.txt` | Python dependencies | < 1 KB |
 | `eyes.gif` | Animated preview export, 191 frames at 1024 × 1024 | ~20 MB |
-| `eyes_landscape.mp4` | Landscape video export, 1920 × 1080 at 25 fps | ~8 MB |
 | `LICENSE` | MIT License | < 1 KB |
 
 ## License
